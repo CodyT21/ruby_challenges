@@ -2,9 +2,9 @@ require 'date'
 
 class Meetup
   # methods
-  # initialize 
+  # initialize
   #   - inputs
-  #     - month number (int) 
+  #     - month number (int)
   #     - year (int)
   # day
   #   - inputs
@@ -35,15 +35,8 @@ class Meetup
     #     - fifth: 29 - 31 (maybe)
     # if teenth is descriptor
     #   - date range is 13 - 19
-    case descriptor.downcase
-    when 'first' then first(weekday)
-    when 'second' then second(weekday)
-    when 'third' then third(weekday)
-    when 'fourth' then fourth(weekday)
-    when 'fifth' then fifth(weekday)
-    when 'last' then last(weekday)
-    when 'teenth' then teenth(weekday)
-    end
+
+    send(descriptor.downcase.to_sym, weekday)
   end
 
   private
@@ -83,7 +76,8 @@ class Meetup
   def fifth(weekday)
     dates = []
     (29..31).each do |day|
-      dates << Date.civil(year, month, day) unless day > Date.civil(year, month, -1).day
+      next if day > Date.civil(year, month, -1).day
+      dates << Date.civil(year, month, day)
     end
     select_date(weekday, dates)
   end

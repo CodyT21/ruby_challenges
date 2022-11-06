@@ -23,8 +23,8 @@ class Robot
     robot_name = ''
 
     loop do
-      2.times { robot_name += LETTERS.sample}
-      3.times { robot_name += NUMBERS.sample}
+      2.times { robot_name += LETTERS.sample }
+      3.times { robot_name += NUMBERS.sample }
 
       break unless @@robot_names.include?(robot_name)
       robot_name = ''
@@ -33,4 +33,3 @@ class Robot
     robot_name
   end
 end
-    

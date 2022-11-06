@@ -9,7 +9,7 @@ class CustomSet
 
   def empty?
     set.empty?
-  end 
+  end
 
   def contains?(num)
     set.include?(num)
@@ -26,7 +26,7 @@ class CustomSet
   def eql?(other_set)
     set.sort == other_set.set.sort
   end
-  # alias_method :==, :eql?
+
   def ==(other_set)
     eql?(other_set)
   end

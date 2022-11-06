@@ -3,14 +3,14 @@ require 'pry-byebug'
 class Element
   # methods
   #   - initialize
-  #     - accepts 2 parameters, an integer and an object of type Element (optional)
+  #     - accepts 2 parameters, an integer and an optional Element object
   #   - tail?
   #     - returns boolean of whether there is a next element
   #   - next
   #     - returns next element or nil if no next element
   #   - datum
   #     - returns value of the Element object
-  
+
   attr_reader :datum, :next
 
   def initialize(datum, next_element = nil)
@@ -82,8 +82,8 @@ class SimpleLinkedList
   end
 
   def self.from_a(arr)
-    return self.new if arr.nil? || arr.empty?
-    linked_list = self.new
+    return new if arr.nil? || arr.empty?
+    linked_list = new
     arr.reverse.each { |ele| linked_list.push(ele) }
     linked_list
   end
@@ -110,5 +110,4 @@ class SimpleLinkedList
 
     self.class.from_a(list_elements.reverse)
   end
-
 end
