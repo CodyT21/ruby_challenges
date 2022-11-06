@@ -6,13 +6,13 @@ class Verse
   end
 
   def lyrics
-    case bottle  
+    case bottle
     when 0 then verse_0
     when 1 then verse_1
     when 2 then verse_2
     else
-        verse_3_to_99(bottle)
-    end 
+      verse_3_to_99(bottle)
+    end
   end
 
   private
@@ -38,18 +38,18 @@ class Verse
   end
 end
 
-class BeerSong 
+class BeerSong
   def self.verse(bottle)
     Verse.new(bottle).lyrics
   end
 
   def self.verses(start_bottle, last_bottle)
     output = []
-    start_bottle.downto(last_bottle).each { |bottle| output << self.verse(bottle) }
+    start_bottle.downto(last_bottle).each { |bottle| output << verse(bottle) }
     output.join("\n")
   end
 
   def self.lyrics
-    self.verses(99, 0)
+    verses(99, 0)
   end
 end

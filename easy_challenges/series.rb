@@ -19,4 +19,3 @@ class Series
     sliced_array
   end
 end
-      
